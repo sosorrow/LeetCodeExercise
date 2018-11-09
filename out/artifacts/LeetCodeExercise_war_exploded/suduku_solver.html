@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suduku Solver</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+
+    <script type="text/javascript" src="js/table.js" ></script>
+    <script type="text/javascript" >
+        var data = [["5","3"," "," ","7"," "," "," "," "],["6"," "," ","1","9","5"," "," "," "],[" ","9","8"," "," "," "," ","6"," "],["8"," "," "," ","6"," "," "," ","3"],["4"," "," ","8"," ","3"," "," ","1"],["7"," "," "," ","2"," "," "," ","6"],[" ","6"," "," "," "," ","2","8"," "],[" "," "," ","4","1","9"," "," ","5"],[" "," "," "," ","8"," "," ","7","9"]];
+//        [
+//            ["5", "3", " ", " ", "7", " ", " ", " ", " "],
+//            ["6", " ", " ", "1", "9", "5", " ", " ", " "],
+//            [" ", "9", "8", " ", " ", " ", " ", "6", " "],
+//            ["8", " ", " ", " ", "6", " ", " ", " ", "3"],
+//            ["4", " ", " ", "8", " ", "3", " ", " ", "1"],
+//            ["7", " ", " ", " ", "2", " ", " ", " ", "6"],
+//            [" ", "6", " ", " ", " ", " ", "2", "8", " "],
+//            [" ", " ", " ", "4", "1", "9", " ", " ", "5"],
+//            [" ", " ", " ", " ", "8", " ", " ", "7", "9"]
+//        ];
+
+        var table = new Table(9, 9, 40);
+        table.fill(data);
+        table.fillEmpty('<input type="text" style="color: red;width: 100%;height: 40px;text-align: center;" />');
+
+        function checkSudoku(data) {
+            var p = "123456789";
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    var ei = -1, ej = -1;
+                    for (var m = 0; m < 3; m++) {
+                        for (var n = 0; n < 3; n++) {
+                            console.log(data[i * 3 + m][j * 3 + n]);
+                            if (data[i * 3 + m][j * 3 + n] !== " ") p = p.replace(data[i * 3 + m][j * 3 + n], "");
+                            else if (ei === -1 && ej === -1) {
+                                ei = i * 3 + m;
+                                ej = j * 3 + n;
+                            }
+                        }
+                    }
+                    console.log(ei + " --- " + ej);
+                    if (ei !== -1 && ej !== -1) {
+                        data[ei][ej] = p.substring(0, 1);
+//                        checkSudoku(data);
+                    }
+                    return d;
+                }
+            }
+        }
+
+        var d = data;
+//        checkSudoku(d);
+        console.log(d);
+    </script>
+</body>
+</html>

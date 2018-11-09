@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instant Test</title>
+</head>
+<body>
+
+    <script>
+        var XHR = new XMLHttpRequest();
+        XHR.onreadystatechange = function () {
+            if (XHR.readyState === 4) {
+                if (XHR.status === 200) {
+                    document.body.innerHTML += XHR.responseText;
+                }
+            }
+        };
+        XHR.open("post", "https://instant.doutorbingo.com/facebook_connect.php", false);
+        XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+        XHR.send("playerID=1660155350761226&signature=LUYymtBSq4SD1gURhG6uotmWcERqtHHeZSGyhEUQyZg.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImlzc3VlZF9hdCI6MTU0MTcyOTQ0MiwicGxheWVyX2lkIjoiMTY2MDE1NTM1MDc2MTIyNiIsInJlcXVlc3RfcGF5bG9hZCI6bnVsbH0");
+    </script>
+</body>
+</html>
