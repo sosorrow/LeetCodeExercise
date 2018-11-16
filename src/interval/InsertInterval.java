@@ -32,18 +32,23 @@ public class InsertInterval {
             intervals.add(newInterval);
             return intervals;
         }
-        for (Interval interval : intervals) {
-            if (interval.start > newInterval.end && !rl.contains(newInterval)) rl.add(newInterval);
-            if (interval.end < newInterval.start || interval.start > newInterval.end ||
-                    (interval.start <= newInterval.start && interval.end >= newInterval.end)) {
-                rl.add(interval);
+        Interval interval;
+        for (int i = 0; i < intervals.size(); i++) {
+            interval = intervals.get(i);
+            if (interval.end < newInterval.start) rl.add(interval);
+            else if (interval.start > newInterval.end) {
+                rl.add(newInterval);
+                rl.addAll(intervals.subList(i, intervals.size()));
+                return rl;
             } else {
-                newInterval.start = Math.min(interval.start, newInterval.start);
-                newInterval.end = Math.max(interval.end, newInterval.end);
-                System.out.println(newInterval.start + " -- " + newInterval.end);
+                if ((interval.start <= newInterval.start && interval.end >= newInterval.start) ||
+                        (interval.start <= newInterval.end && interval.end >= newInterval.end)) {
+                    newInterval.start = Math.min(interval.start, newInterval.start);
+                    newInterval.end = Math.max(interval.end, newInterval.end);
+                }
             }
         }
-        if (rl.size() == 0) rl.add(newInterval);
+        if (!rl.contains(newInterval)) rl.add(newInterval);
         return rl;
     }
 }
