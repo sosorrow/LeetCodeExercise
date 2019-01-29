@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link type="text/css" href="css/common.css" rel="stylesheet" >
+    <link type="text/css" href="css/login.css" rel="stylesheet" >
+</head>
+<body>
+    <div id="login-box" >
+
+    </div>
+    <div onclick="showLoginBox()" >click</div>
+    <div onclick="hideLoginBox()" >hide</div>
+    <script>
+        function showLoginBox() {
+            var loginBox = document.querySelector("#login-box");
+            loginBox.setAttribute("class", (loginBox.getAttribute("class") || "") + " show-box");
+        }
+
+        function hideLoginBox() {
+            var loginBox = document.querySelector("#login-box");
+            loginBox.setAttribute("class", loginBox.getAttribute("class").replace(" show-box", ""));
+        }
+
+    </script>
+</body>
+</html>

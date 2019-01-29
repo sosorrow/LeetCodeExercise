@@ -1,0 +1,22 @@
+body {
+    height:3000px;}
+
+#login-box {
+    width: 674px;
+    height: 677px;
+    margin-left: -337px;
+    margin-top: -338px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transition: all 0.2s linear;
+    opacity: 0;
+    transform: scale(0.8, 0.8);
+    text-align: center;
+    background-color: #333333;
+}
+
+.show-box {
+    opacity: 1 !important;
+    transform: scale(1, 1) !important;
+}
